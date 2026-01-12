@@ -613,7 +613,7 @@ async function fetchAndPopulateResults() {
         void clone.offsetWidth;
 
         // Calculate fixed speed: 100 pixels per second (adjustable)
-        const SPEED_PX_PER_SEC = 100;
+        const SPEED_PX_PER_SEC = 125;
         const contentWidth = marqueeContent.offsetWidth;
         const duration = contentWidth / SPEED_PX_PER_SEC;
 
