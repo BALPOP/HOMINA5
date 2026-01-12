@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POP-SORTE - Loteria Oficial</title>
+    <link rel="icon" type="image/png" href="media/qui.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="pop-sorte.css">
+    
+    <!-- Load additional Google Fonts for templates -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+    /* ==========================================
+       TEMPLATE 4: GOLDEN GALA STYLES
+       ========================================== */
+    .popluz-section.popluz-design-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 100%;
+      z-index: 2000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .popluz-gala {
+      --gg-bg-dark: #ffffff;
+      --gg-bg-surface: #f8fafc;
+      --gg-bg-card: #ffffff;
+      --gg-bg-elevated: #f3f4f6;
+      --gg-champagne-bright: #b45309;
+      --gg-champagne-primary: #d97706;
+      --gg-champagne-rich: #b45309;
+      --gg-champagne-dark: #78350f;
+      --gg-warm-red: #dc2626;
+      --gg-warm-orange: #ea580c;
+      --gg-warm-pink: #db2777;
+      --gg-warm-burgundy: #991b1b;
+      --gg-ivory: #111827;
+      --gg-cream: #1f2937;
+      --gg-white: #ffffff;
+      --gg-text-dim: #4b5563;
+      --gg-text-muted: #6b7280;
+      --gg-border-gold: rgba(180, 83, 9, 0.2);
+      --gg-glow-gold: rgba(217, 119, 6, 0.3);
+      --gg-font-display: 'Space Grotesk', sans-serif;
+      --gg-font-body: 'Inter', sans-serif;
+      
+      font-family: var(--gg-font-body);
+      background: var(--gg-bg-dark);
+      color: var(--gg-ivory);
+      min-height: 100vh;
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+      padding-top: 60px;
+    }
+    
+    /* Elegant Grain/Noise Background - Adjusted for white */
+    .popluz-gala::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+    
+    /* Golden Vignette - Adjusted for white */
+    .popluz-gala::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(217, 119, 6, 0.03) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Confetti Particles - Darker for visibility */
+    .popluz-gala::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(4px 4px at 50px 100px, #fbbf24, transparent),
+        radial-gradient(3px 3px at 150px 200px, #ef4444, transparent),
+        radial-gradient(4px 4px at 300px 80px, #d97706, transparent),
+        radial-gradient(3px 3px at 450px 250px, #ec4899, transparent),
+        radial-gradient(4px 4px at 600px 120px, #b45309, transparent),
+        radial-gradient(3px 3px at 750px 300px, #f97316, transparent);
+      animation: gg-confetti-fall 12s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+    
+    @keyframes gg-confetti-fall {
+      0% { transform: translateY(-10vh) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
+    }
+    
+    .gg-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 25px;
+      position: relative;
+      z-index: 1;
+      border-radius: 8px;
+    }
+    
+    /* Golden Gala Header */
+    .gg-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--gg-border-gold);
+      padding: 10px 0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+    }
+    
+    .gg-header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 12px;
+    }
+    
+    .gg-nav {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    
+    .gg-nav a {
+      color: var(--gg-text-dim);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 20px;
+      transition: 0.2s ease;
+      border: 2px solid rgba(212, 168, 83, 0.3);
+      background: rgba(212, 168, 83, 0.05);
+    }
+    
+    .gg-nav a:hover {
+      color: var(--gg-champagne-bright);
+      background: rgba(212, 168, 83, 0.15);
+      border-color: rgba(230, 200, 141, 0.5);
+    }
+    
+    /* Golden Gala Hero */
+    .gg-hero {
+      position: relative;
+      padding: 30px 0 25px;
+      min-height: auto;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .gg-hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 30px;
+      align-items: flex-start;
+    }
+    
+    .gg-hero-content {
+      text-align: left;
+    }
+    
+    .gg-hero-title {
+      font-family: var(--gg-font-display);
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    
+    .gg-title-line {
+      display: inline;
+    }
+    
+    .gg-title-elegant {
+        color: #0051ff;
+      font-style: normal;
+      text-shadow: none;
+      font-weight: 900;
+    }
+    
+    .gg-hero-description {
+      font-size: 16px;
+      color: var(--gg-text-dim);
+      line-height: 1.8;
+      margin-bottom: 20px;
+      max-width: 520px;
+      position: relative;
+      padding-left: 15px;
+    }
+    
+    .gg-hero-description::before {
+      content: '"';
+      position: absolute;
+      left: 0;
+      top: -10px;
+      font-family: var(--gg-font-display);
+      font-size: 50px;
+      color: var(--gg-champagne-rich);
+      opacity: 0.5;
+      line-height: 1;
+    }
+    
+    .gg-cta-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    
+    .gg-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-family: var(--gg-font-body);
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .gg-btn-gala {
+      background: #4c1d95;
+      color: #ffffff;
+      padding: 18px 36px;
+      font-size: 15px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4), inset 0 -2px 4px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.06);
+      animation: countdownColors 5s linear infinite;
+    }
+    
+    .gg-btn-gala:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5), inset 0 -2px 4px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.06);
+    }
+    
+    @keyframes countdownColors {
+      0%   { background: #4c1d95; }
+      20%  { background: #7c3aed; }
+      40%  { background: #c026d3; }
+      60%  { background: #e11d48; }
+      80%  { background: #d97706; }
+      100% { background: #4c1d95; }
+    }
+    
+    .gg-btn-gala::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+      transition: 0.6s;
+    }
+    
+    .gg-btn-gala:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 15px 45px var(--gg-glow-gold), 0 0 40px rgba(212, 168, 83, 0.4);
+    }
+    
+    .gg-btn-gala:hover::before {
+      left: 100%;
+    }
+    
+    .gg-btn-festive {
+      background: transparent;
+      color: var(--gg-champagne-dark);
+      border: 3px solid var(--gg-champagne-primary);
+      padding: 18px 36px;
+      font-size: 15px;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+    }
+    
+    .gg-btn-festive:hover {
+      background: rgba(217, 119, 6, 0.15);
+      border-color: var(--gg-champagne-rich);
+      color: var(--gg-champagne-rich);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(217, 119, 6, 0.4);
+    }
+    
+    /* Preview Card - Gift Box Style */
+    .gg-preview-card {
+      background: linear-gradient(180deg, #facc15 0%, #ca8a04 100%);
+      border: none;
+      border-radius: 8px;
+      overflow: visible;
+      box-shadow: none;
+      position: relative;
+      order: -1;
+      isolation: isolate;
+      z-index: 0;
+    }
+    
+    /* Animated border like info-banner */
+    .gg-preview-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 10px;
+      padding: 3px;
+      background: linear-gradient(
+        90deg,
+        #facc15 0%,
+        #d97706 25%,
+        #4c1d95 50%,
+        #312e81 75%,
+        #facc15 100%
+      );
+      background-size: 300% 300%;
+      animation: gg-bannerBorderFlow 6s linear infinite;
+      z-index: -1;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+    }
+    
+    @keyframes gg-bannerBorderFlow {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+    
+    .gg-preview-card::after {
+      display: none;
+    }
+    
+    @keyframes gg-gift-card-float {
+      0%, 100% { transform: translateY(0) rotate(-0.5deg); }
+      50% { transform: translateY(-12px) rotate(0.5deg); }
+    }
+    
+    .gg-preview-header {
+      padding: 15px 18px;
+      border-bottom: 2px solid var(--gg-border-gold);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(217, 119, 6, 0.05) 0%, transparent 100%);
+      position: relative;
+      z-index: 5;
+      border-radius: 8px 8px 0 0;
+    }
+    
+    .gg-preview-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-radius: 8px;
+    }
+    
+    .gg-preview-title h3 {
+      font-family: var(--gg-font-display);
+      font-size: 20px;
+      font-style: normal;
+      letter-spacing: 0.1em;
+      color: white;
+      text-align: center;
+    }
+    
+    .gg-gift-icon {
+      font-size: 24px;
+      animation: gg-gift-shake 2s ease-in-out infinite;
+    }
+    
+    @keyframes gg-gift-shake {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+    }
+    
+    .gg-preview-img {
+      padding: 28px;
+      background: radial-gradient(circle at 50% 100%, rgba(212, 168, 83, 0.08) 0%, transparent 60%);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .gg-preview-img img {
+      width: 100%;
+      border-radius: 20px;
+      border: 3px solid var(--gg-champagne-rich);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 168, 83, 0.15);
+      transition: 0.4s ease;
+    }
+    
+    /* Slider Container for Golden Gala */
+    .gg-slider-container {
+      position: relative;
+      width: 100%;
+      padding: 20px;
+      z-index: 2;
+      background: #ffffff;
+      border-radius: 8px;
+    }
+    
+    .gg-slider-viewport {
+      overflow: hidden;
+      border-radius: 20px;
+      position: relative;
+    }
+    
+    .gg-slider-wrapper {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .gg-slide {
+      min-width: 100%;
+      flex: 0 0 100%;
+    }
+    
+    .gg-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 20px;
+      border: none;
+      box-shadow: none;
+    }
+    
+    .gg-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .gg-dots .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(212, 168, 83, 0.3);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    
+    .gg-dots .dot:hover {
+      background: rgba(212, 168, 83, 0.6);
+    }
+    
+    .gg-dots .dot.active {
+      background: var(--gg-champagne-bright);
+      width: 28px;
+      border-radius: 5px;
+      box-shadow: 0 0 15px var(--gg-glow-gold);
+    }
+    
+    /* Golden Gala Footer */
+    .gg-footer {
+      padding: 30px 0;
+      border-top: 2px solid var(--gg-border-gold);
+      text-align: center;
+      background: linear-gradient(180deg, transparent, rgba(212, 168, 83, 0.03));
+      position: relative;
+      margin-top: 30px;
+    }
+    
+    @media (max-width: 768px) {
+      .gg-footer {
+        padding: 20px 0;
+        margin-top: 20px;
+      }
+      
+      .gg-footer-logo {
+        font-size: 20px;
+      }
+      
+      .gg-footer p {
+        font-size: 13px;
+      }
+    }
+    
+    .gg-footer::before {
+      content: '🎊';
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 30px;
+    }
+    
+    .gg-footer-logo {
+      font-family: var(--gg-font-display);
+      font-size: 22px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--gg-champagne-bright);
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px var(--gg-glow-gold);
+    }
+    
+    .gg-footer p {
+      color: var(--gg-text-dim);
+      font-size: 13px;
+    }
+    
+    .gg-footer-warning {
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--gg-text-muted);
+    }
+    
+    /* Benefits Section Gala */
+    .gg-benefits {
+      margin-top: 20px;
+      padding: 20px;
+      background: rgba(26, 17, 10, 0.8);
+      border-radius: 20px;
+      border: 2px solid var(--gg-border-gold);
+    }
+    
+    .gg-benefits h3 {
+      font-family: var(--gg-font-display);
+      font-size: 15px;
+      font-style: normal;
+      color: #fbbf24;
+      margin-bottom: 12px;
+      text-align: left;
+      text-shadow: 0 0 15px var(--gg-glow-gold);
+    }
+    
+    .gg-benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(251, 191, 36, 0.3);
+    }
+    
+    .gg-benefit-item:last-child {
+      border-bottom: none;
+    }
+    
+    .gg-benefit-icon {
+      font-size: 28px;
+      width: 28px;
+      flex-shrink: 0;
+    }
+    
+    .gg-benefit-item span:last-child {
+      color: #f1f5f9;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    
+    /* Contact Buttons Gala */
+    .gg-contacts {
+      margin-top: 30px;
+      text-align: center;
+    }
+    
+    .gg-contacts h4 {
+      font-family: var(--gg-font-display);
+      font-size: clamp(28px, 4vw, 42px);
+      font-style: normal;
+      font-weight: 900;
+      color: #fbbf24;
+      background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+      margin-bottom: 15px;
+      text-align: center;
+      line-height: 1.1;
+    }
+    
+    .gg-contact-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .gg-contact-btn {
+      padding: 16px 32px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: 0.3s ease;
+      cursor: pointer;
+      min-width: 140px;
+    }
+    
+    .gg-contact-btn.telegram {
+      background: #0088cc;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 136, 204, 0.4);
+    }
+    
+    .gg-contact-btn.whatsapp {
+      background: linear-gradient(90deg, #25d366 0%, #20ba5a 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    }
+    
+    .gg-contact-btn:hover {
+      transform: translateY(-3px);
+    }
+    
+    .gg-contact-btn.telegram:hover {
+      box-shadow: 0 6px 16px rgba(0, 136, 204, 0.6);
+      background: #0099dd;
+    }
+    
+    .gg-contact-btn.whatsapp:hover {
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
+      background: linear-gradient(90deg, #2ee574 0%, #25d366 100%);
+    }
+
+    /* Mobile-only nav - hidden on desktop */
+    .gg-mobile-nav {
+      display: none;
+    }
+    
+    /* ==========================================
+       RESPONSIVE DESIGN FOR BOTH THEMES
+       ========================================== */
+    @media (max-width: 968px) {
+      /* Hide header nav on mobile/tablet */
+      .gg-header {
+        display: none;
+      }
+      
+      /* Show mobile nav on mobile/tablet */
+      .gg-mobile-nav {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        padding: 0px 0px;
+        width: 100%;
+      }
+      
+      .gg-mobile-nav a {
+        color: var(--gg-text-dim);
+        text-decoration: none;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 8px 14px;
+        border-radius: 20px;
+        transition: 0.2s ease;
+        border: 2px solid rgba(212, 168, 83, 0.3);
+        background: rgba(212, 168, 83, 0.05);
+        margin-bottom: 8px;
+      }
+      
+      .gg-mobile-nav a:hover {
+        color: var(--gg-champagne-bright);
+        background: rgba(212, 168, 83, 0.15);
+        border-color: rgba(230, 200, 141, 0.5);
+      }
+      
+      .gg-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+      
+      /* Reorder: Slider first, then mobile nav, then content on mobile/tablet */
+      .gg-preview-card {
+        order: 0;
+      }
+      
+      .gg-hero-content {
+        text-align: center;
+        order: 2;
+      }
+      
+      .gg-hero-description {
+        margin: 0 auto 20px;
+        padding-left: 0;
+        text-align: center;
+      }
+      
+      .gg-hero-description::before {
+        display: none;
+      }
+      
+      .gg-cta-group {
+        justify-content: center;
+      }
+    }
+    
+    /* Desktop-specific styles */
+    @media (min-width: 969px) {
+      .gg-hero-content {
+        text-align: center;
+      }
+      
+      .gg-hero-title {
+        text-align: center;
+      }
+      
+      .gg-cta-group {
+        justify-content: center;
+      }
+      
+      .gg-contact-btn {
+        padding: 16px 32px;
+        font-size: 15px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .gg-container {
+        padding: 0 15px;
+      }
+      
+      .gg-header {
+        padding: 8px 0;
+      }
+      
+      .gg-header-content {
+        justify-content: center;
+      }
+      
+      .gg-hero {
+        padding: 20px 0 15px;
+        min-height: auto;
+      }
+      
+      .gg-hero-title {
+        font-size: 32px;
+        line-height: 1.2;
+      }
+      
+      .gg-hero-description {
+        font-size: 17px;
+        line-height: 1.9;
+      }
+      
+      .gg-btn {
+        padding: 14px 24px;
+        font-size: 15px;
+      }
+      
+      .gg-preview-header {
+        flex-direction: column;
+        gap: 12px;
+        padding: 15px 18px;
+      }
+      
+      .gg-preview-title h3 {
+        font-size: 20px;
+      }
+      
+      .gg-slider-container {
+        padding: 15px;
+      }
+      
+      .gg-badge-balloons {
+        display: none;
+      }
+      
+      .gg-benefits {
+        margin-top: 15px;
+        padding: 18px;
+      }
+      
+      .gg-benefits h3 {
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+      
+      .gg-benefits p {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      
+      .gg-badge-text {
+        font-size: 12px;
+      }
+      
+      .gg-badge-ribbon {
+        font-size: 10px;
+        padding: 5px 12px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .gg-hero-title {
+        font-size: 28px;
+        line-height: 1.2;
+      }
+      
+      .gg-cta-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+      }
+      
+      .gg-btn {
+        width: 100%;
+        padding: 14px 22px;
+        font-size: 15px;
+      }
+      
+      .gg-gala-badge {
+        padding: 10px 16px;
+        gap: 8px;
+      }
+      
+      .gg-badge-text {
+        font-size: 11px;
+      }
+      
+      .gg-hero-description {
+        font-size: 16px;
+        line-height: 1.9;
+      }
+      
+      .gg-benefits {
+        padding: 18px;
+      }
+      
+      .gg-benefits h3 {
+        font-size: 17px;
+        margin-bottom: 12px;
+      }
+      
+      .gg-benefits p {
+        font-size: 14px;
+        line-height: 1.7;
+      }
+      
+      .gg-logo-text h1 {
+        font-size: 22px;
+      }
+      
+      .gg-logo-text p {
+        font-size: 9px;
+      }
+    }
+    </style>
+    <meta property="og:title" content="POP-SORTE - Loteria Oficial" />
+    <meta property="og:description" content="Recarregue, ganhe mais bilhetes e seja um sortudo! Quina Especial da POP. Prêmio diário de R$1000." />
+    <meta property="og:image" content="https://i.ibb.co/PZfHLG3k/qui2.png" />
+    <meta property="og:image:secure_url" content="https://i.ibb.co/PZfHLG3k/qui2.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="300" />
+    <meta property="og:url" content="https://popsorte.vip/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="POP-SORTE - Loteria Oficial" />
+    <meta name="twitter:description" content="Recarregue, ganhe mais bilhetes e seja um sortudo! Quina Especial da POP. Prêmio diário de R$1000." />
+    <meta name="twitter:image" content="https://i.ibb.co/PZfHLG3k/qui2.png" />
+</head>
+<body class="gogo-compact">
+    <div class="phone-shell">
+        <div class="phone-screen">
+    <section class="results-marquee sticky-marquee">
+        <div class="marquee-content" id="marqueeContent">
+            <div class="marquee-text">
+                <div class="marquee-balls" id="marqueeBalls">
+                    <span class="marquee-loading">CARREGANDO RESULTADOS...</span>
+                </div>
+                📢 Confira o último resultado SÓ NA página do Site Oficial da Caixa: <a href="https://loterias.caixa.gov.br" target="_blank" class="marquee-link">https://loterias.caixa.gov.br</a> ou REDE TV, AO VIVO no YouTube. NINGUÉM SAI DE MÃOS VAZIAS!! 🎁🎁🎁
+            </div>
+        </div>
+    </section>
+    <section class="contest-info sticky-info">
+        <div class="container">
+            <div class="info-card">
+                <div class="info-item">
+                    <div class="info-label">DATA SORTEIO</div>
+                    <div class="info-value" id="drawDate">Carregando...</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">CONCURSO</div>
+                    <div class="info-value" id="contestNumber">Carregando...</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">TEMPO RESTANTE</div>
+                    <div class="info-value countdown pulse" id="countdown">00:00:00</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero-section">
+        <div class="hero-inner" style="padding: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+            <a href="https://www.youtube.com/@redetv/streams" target="_blank" rel="noopener" style="width: 100%; height: 100%; display: block;">
+                <img 
+                    src="media/Caixa.gif" 
+                    type="image/gif"
+                    style="width: 100%; height: 100%; object-fit: CONTAIN; display: block; cursor: pointer;"
+                    class="caixa-hero-video"
+                    alt="Caixa GIF">
+            </a>
+        </div>
+    </section>
+
+    <section class="selection-section" id="selection">
+        <div class="container">
+            <div class="selection-card">
+                <p class="section-subtitle">Escolha de 5 números dos 80 disponíveis</p>
+
+                <div class="action-buttons">
+                    <button class="btn-secondary btn-emoji" id="btnClearNumbers">
+                        <span class="emoji" aria-hidden="true">🧹</span>
+                        <span class="label">Limpar</span>
+                    </button>
+                    <button class="btn-primary btn-emoji" id="btnSurpresinha">
+                        <span class="emoji" aria-hidden="true">🎲</span>
+                        <span class="label">Surpresinha</span>
+                    </button>
+                </div>
+
+                <div class="selected-display">
+                    <div class="selected-header">
+                        <strong>Números selecionados:</strong>
+                    </div>
+                    <div class="selected-numbers" id="selectedNumbers">
+                        <span class="empty-state">Nenhum número selecionado</span>
+                    </div>
+                    <div class="selected-count" id="selectedCount">0/5 números</div>
+                </div>
+
+                <div class="number-grid" id="numberGrid"></div>
+
+                <button class="submit-button" id="submitBtn">
+                    <span class="button-top">🎫 GERE O BILHETE 🎫</span>
+                </button>
+
+                <div class="spacer-20"></div>
+            
+                <div class="rules-transfer">
+                    <strong>🚨 IMPORTANTE PARA ENTENDER</strong> Você recarrega no mínimo R$10 → ganha 1 bilhete grátis → joga normalmente com seu saldo → e ainda concorre ao prêmio de R$1.000 na loteria.<br><br>👉 1 recarga garante 1 bilhete grátis. <strong>Simples assim.</strong><br>👉 Se você jogar apenas com o bilhete grátis sem fazer recarga antes, o bilhete será inválido.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rules-section">
+        <div class="rules-container">
+            <div class="info-banner">
+                <h2 class="rules-title">📋 REGRAS,<br>PARTICIPAÇÃO E PREMIAÇÃO</h2>
+                <div class="sabado-bonus">🍀 FÁCIL DE JOGAR, JUSTO E TRANSPARENTE</div>
+            </div>
+                
+            <div class="spacer-10"></div>
+            
+            <div class="rule-item">
+                <strong>1. COMO PARTICIPAR</strong>
+                <ul class="rule-list">
+                    <li>Cada recarga concede 1 bilhete de loteria.</li>
+                    <li>Quanto mais recargas, mais bilhetes e mais chances de ganhar.</li>
+                </ul>
+                
+                <div class="spacer-15"></div>
+
+                <strong>2. REGISTRO DO BILHETE</strong>
+                <p class="rule-paragraph">
+                    Acesse o site, escolha números de 01 a 80 e informe seu ID (POPN1). Bilhete é registrado automaticamente após a recarga.
+                </p>
+                <p class="rule-alert">
+                    📢 Importante: Só valem números registrados no mesmo dia da recarga.
+                    Registros duplicados não contam; vale apenas o primeiro por recarga.
+                </p>
+                
+                <div class="spacer-15"></div>
+
+                <strong>3. HORÁRIO DE VALIDADE DAS APOSTAS</strong>
+                <ul class="rule-list">
+                    <li>Apostas antes das 20:00: sorteio do mesmo dia</li>
+                    <li>Apostas após as 20:00: sorteio do dia seguinte</li>
+                </ul>
+                
+                <div class="spacer-15"></div>
+                
+                <strong>🏆 CONDIÇÕES DE PREMIAÇÃO:</strong>
+                <p>Os números devem coincidir com a Quina oficial. Apenas uma faixa é premiada por sorteio:</p>
+                <ul class="rule-list">
+                    <li>5 números → prêmio máximo</li>
+                    <li>4 números → somente se não houver vencedor de 5 números</li>
+                    <li>3 números → somente se não houver vencedor de 5 ou 4 números</li>
+                    <li>e assim por diante</li>
+                </ul>
+                <p class="rule-alert">
+                    👥 Múltiplos Vencedores: 
+                    Se houver mais de um vencedor na mesma faixa, o prêmio será dividido igualmente.
+                </p>
+                
+                <div class="spacer-15"></div>
+                
+
+                <strong>📊 RESULTADO OFICIAL:</strong>
+                <p class="rule-paragraph">Os resultados seguem a Quina oficial do Brasil.</p>
+                <p class="rule-paragraph rule-link-wrap">
+                    Consulta: <a href="https://loterias.caixa.gov.br" target="_blank" class="rule-link">https://loterias.caixa.gov.br</a>
+                </p>
+                
+                <div class="spacer-15"></div>
+                
+                <div class="sabado-bonus">👉 Resultado: Prêmios máximos entregues todos os dias, 100% garantidos!</div>
+                
+                <div class="spacer-10"></div>
+                
+                <p class="rule-purple">
+                    🎁 ENTREGA DOS PRÊMIOS: Ganhador pode contatar o atendimento ao cliente para receber o prêmio.
+                    A POPN1 também poderá entrar em contato com os vencedores.
+                </p>
+                <div class="rule-note">O evento ocorre diariamente das 20:01 até 19:59 do dia seguinte. Os resultados são baseados no sorteio oficial do governo (Quina).</div>
+            </div>
+
+            <div class="spacer-10"></div>
+            
+            <div class="rules-transfer">
+                <strong>DESCLASSIFICAÇÃO:</strong><br>
+                Haverá desclassificação em caso de fraude, contas múltiplas, informações falsas ou violação das regras.
+                <a href="https://wa.popsorte.vip" class="cta-button-rules">
+                        💬 FALE COM ESPECIALISTA 💬
+                </a>
+                <div class="spacer-10"></div>
+                <div class="vip-cta">
+                    <strong>Entre no grupo VIP oficial e confira os vencedores dos prêmios e presentes!</strong>
+                    <div class="spacer-5"></div>
+                    <div class="tg-buttons">
+                        <a href="https://t.me/+r8QbQP7IGmxjZWUx" class="tg-button" target="_blank" aria-label="Entrar no grupo VIP via Telegram">👆 TELEGRAM</a>
+                        <a href="https://chat.whatsapp.com/LAG7I2qpjVUHVWI7xE3TIc" class="wa-button" target="_blank" aria-label="Entrar no grupo VIP via WhatsApp">👆 WHATSAPP</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vld-section">
+        <div class="container">
+            <div class="search-highlight">
+                <h3 style="margin-bottom: 8px; color: #374151; font-size: 16px; font-weight: 600;">🔍 Buscar e Consulta de Bilhetes</h3>
+                <input type="text" class="search-box" id="searchBox" placeholder="Digite ID de Jogo ou número do WhatsApp">
+                <p style="margin-top: 8px; font-size: 0.8rem; color: #6b7280; line-height: 1.4;">Como consultar: Busque por <strong>ID de Jogo</strong> ou <strong>número completo do WhatsApp</strong>.</p>
+            </div>
+
+            <div class="filters">
+                <div class="filter-label">Filtros:</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn" data-filter="valid">✅ VÁLIDOS</button>
+                    <button class="filter-btn" data-filter="pending">⏳ EM VERIFICAÇÃO...</button>
+                    <button class="filter-btn" data-filter="invalid">❌ INVÁLIDOS</button>
+                    <button class="filter-btn active" data-filter="all">TODOS</button>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px;"></div>
+
+            <div class="loading" id="loadingState">
+                <div class="spinner"></div>
+                Carregando participações...
+            </div>
+
+            <div class="entries-grid" id="entriesGrid" style="display:none;"></div>
+
+            <div class="stats-grid">
+                <div class="stat-card total">
+                    <div class="stat-number" id="totalCount">0</div>
+                    <div class="stat-label">Total de Bilhetes</div>
+                </div>
+                <div class="stat-card valid">
+                    <div class="stat-number" id="validCount">0</div>
+                    <div class="stat-label">✅ VÁLIDOS</div>
+                </div>
+                <div class="stat-card invalid">
+                    <div class="stat-number" id="invalidCount">0</div>
+                    <div class="stat-label">❌ INVÁLIDOS</div>
+                </div>
+                <div class="stat-card pending">
+                    <div class="stat-number" id="pendingCount">0</div>
+                    <div class="stat-label">⏳ Em verificação...</div>
+                </div>
+            </div>
+
+            <div class="footer">
+                🔒 Privacidade: apenas os últimos 4 dígitos do WhatsApp são exibidos. • Última atualização: <span id="lastUpdate">—</span>
+            </div>
+
+            <div class="pagination" id="paginationControls" style="display:none;">
+                <button id="prevBtn">◀ Anterior</button>
+                <span id="pageInfo" style="font-weight:800;">Página 1 de 1</span>
+                <button id="nextBtn">Próximo ▶</button>
+                <select id="perPageSelect">
+                    <option value="10" selected>10 por página</option>
+                    <option value="25">25 por página</option>
+                    <option value="50">50 por página</option>
+                    <option value="100">100 por página</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="vertical-video-section" id="verticalVideoSection">
+        <div class="container">
+            <div class="vertical-video-card">
+                <div class="video-header">
+                    <div class="video-kicker">🎬 PASSO A PASSO EM VÍDEO</div>
+                    <h2 class="video-title">NINGUÉM SAI DE MÃOS VAZIAS!!</h2>
+                    <p class="video-subtitle">Clique em "Como Funciona" para chegar aqui automaticamente</p>
+                </div>
+                <div class="vertical-video-frame">
+                    <video controls playsinline muted loop preload="metadata">
+                        <source src="media/N1--2.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeo.
+                    </video>
+                </div>
+                <div class="spacer-20"></div>
+                <a href="https://wa.popsorte.vip" class="cta-button btn-emoji-hero" target="_blank">
+                    <div class="info-n1">FALE COM ESPECIALISTA</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         POPLUZ SECTION - GOLDEN GALA DESIGN
+         ========================================== -->
+    <section class="popluz-section popluz-design-container active" id="popluzGala">
+        <div class="popluz-gala">
+            <!-- Header -->
+            <header class="gg-header">
+                <div class="gg-container">
+                    <div class="gg-header-content">
+                        <nav class="gg-nav">
+                            <a href="https://t.me/+DXK0BQBTz9YzM2Ux">Canal Oficial</a>
+                            <a href="https://t.me/+r8QbQP7IGmxjZWUx">Grupo VIP</a>
+                            <a href="https://wa.popsorte.vip/grupo">WhatsApp</a>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Hero Section -->
+            <section class="gg-hero">
+                <div class="gg-container">
+                    <div class="gg-hero-grid">
+                        <div class="gg-hero-content">
+                            
+                            <h2 class="gg-hero-title">
+                                <span class="gg-title-line gg-title-elegant">GRUPO VIP EXCLUSIVO</span>
+                            </h2>
+                            
+                            <!-- Mobile-only nav (appears just below title on mobile) -->
+                            <nav class="gg-mobile-nav">
+                                <a href="https://t.me/+DXK0BQBTz9YzM2Ux">Canal Oficial</a>
+                                <a href="https://t.me/+r8QbQP7IGmxjZWUx">Grupo VIP</a>
+                                <a href="https://wa.popsorte.vip/grupo">WhatsApp</a>
+                            </nav>
+                            
+                        <div class="gg-hero-description">
+                            <p style="text-align: center; margin-bottom: 15px; color: var(--gg-text-dim);">
+                                Com apenas <strong>5 indicações</strong>, você garante<br>
+                                <strong>R$223</strong> com 100% de garantia!
+                            </p>
+                            <div style="display: flex; flex-direction: column; gap: 15px; text-align: left;">
+                                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                                    <span style="min-width: 24px; font-size: 18px; line-height: 1.3; text-align: left;">💰</span>
+                                    <span style="flex: 1; line-height: 1.4;">Bônus de indicação a partir de R$30 - Pode ser sacado imediatamente</span>
+                                </div>
+                                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                                    <span style="min-width: 24px; font-size: 18px; line-height: 1.3; text-align: left;">📈</span>
+                                    <span style="flex: 1; line-height: 1.4;">Salário semanal de até R$150.000 (válido a partir de 5 indicações)</span>
+                                </div>
+                                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                                    <span style="min-width: 24px; font-size: 18px; line-height: 1.3; text-align: left;">🎯</span>
+                                    <span style="flex: 1; line-height: 1.4;">Bônus de convite de até R$10.000 - Basta 1 depósito para ativar</span>
+                                </div>
+                                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                                    <span style="min-width: 24px; font-size: 18px; line-height: 1.3; text-align: left;">💼</span>
+                                    <span style="flex: 1; line-height: 1.4;">Business Nível VIP até R$20.000 - Quando membros sobem de nível</span>
+                                </div>
+                                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                                    <span style="min-width: 24px; font-size: 18px; line-height: 1.3; text-align: left;">😍</span>
+                                    <span style="flex: 1; line-height: 1.4;">Taxa de agência R$5 por pessoa - Contate mentor para sacar</span>
+                                </div>
+                            </div>
+                        </div>
+                            
+                            <div class="gg-cta-group" style="margin-top: 20px;">
+                                <a href="https://popluz6n.com?ch=40617" class="gg-btn gg-btn-gala" target="_blank">
+                                    🎉 JOGAR AGORA
+                                </a>
+                                <a href="https://t.me/+DXK0BQBTz9YzM2Ux" class="gg-btn gg-btn-festive" target="_blank">
+                                    🎊 CANAL OFICIAL
+                                </a>
+                            </div>
+
+                            <div class="gg-contacts" style="margin-top: 25px;">
+                                <h4>FALE COM UM MENTOR</h4>
+                                <div class="gg-contact-buttons">
+                                    <a href="http://pop-agent.com/tg" class="gg-contact-btn telegram" target="_blank" rel="noopener">
+                                        TELEGRAM
+                                    </a>
+                                    <a href="http://pop-agent.com/wa" class="gg-contact-btn whatsapp" target="_blank" rel="noopener">
+                                        WHATSAPP
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="gg-benefits">
+                                <h3>💰 Como participar?</h3>
+                                <p style="color: #ffffff; font-size: 14px; line-height: 1.6; margin-top: 10px;">
+                                    Basta fazer um depósito e se manter ativo na plataforma para concorrer todos os dias a prêmios extras, bônus exclusivos e ainda garantir aquele saque que faz a diferença
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="gg-preview-card">
+                            <div class="gg-preview-header">
+                                <div class="gg-preview-title">
+                                    <span class="gg-gift-icon">🎁</span>
+                                    <h3>GRUPO DE EVENTOS VIP </h3>
+                                    <span class="gg-gift-icon">🎁</span>
+                                </div>
+                            </div>
+                            <div class="gg-slider-container">
+                                <div class="gg-slider-viewport">
+                                    <div class="gg-slider-wrapper" id="ggSlider">
+                                        <div class="gg-slide"><a href="https://t.me/PopRedeBot" target="_blank" rel="noopener"><img src="media/1.jpg" alt="Roleta Comissão"></a></div>
+                                        <div class="gg-slide"><a href="https://t.me/PopRedeBot" target="_blank" rel="noopener"><img src="media/2.jpg" alt="Roleta Diária"></a></div>
+                                        <div class="gg-slide"><a href="https://t.me/PopRedeBot" target="_blank" rel="noopener"><img src="media/3.jpg" alt="Roleta Slot"></a></div>
+                                        <div class="gg-slide"><a href="https://t.me/PopRedeBot" target="_blank" rel="noopener"><img src="media/4.jpg" alt="Premium VIP"></a></div>
+                                        <div class="gg-slide"><a href="https://t.me/PopRedeBot" target="_blank" rel="noopener"><img src="media/5.jpg" alt="Aniversário"></a></div>
+                                        <div class="gg-slide"><a href="https://t.me/PopRedeBot" target="_blank" rel="noopener"><img src="media/6.jpg" alt="Roda da Fortuna"></a></div>
+                                    </div>
+                                </div>
+                                <div class="gg-dots" id="ggDots"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Footer Removed -->
+        </div>
+    </section>
+
+    <div id="userInfoPopup" class="user-info-popup">
+        <div class="user-info-popup-content">
+            <span class="close-popup" id="closePopupBtn">&times;</span>
+            <div class="user-info-popup-body">
+                <!-- Hidden platform selection for JavaScript -->
+                <input type="radio" name="platformChoice" value="POPN1" checked style="display: none;">
+                <div id="platformBadgePopup" style="display: none;">POPN1</div>
+
+                <div class="form-group">
+                    <label class="form-label">ID DO JOGO POPN1</label>
+                    <input type="text" id="gameId" class="form-input" placeholder="Digite 10 dígitos (ex: 3264684583)" maxlength="10" required>
+                    <p class="hint-text">
+                        Digite 10 números do seu ID (ex: 3264684583)
+                    </p>
+                </div>
+
+                <div class="form-group" id="whatsappGroup">
+                    <label class="form-label">NÚMERO DO WHATSAPP</label>
+                    <div class="whatsapp-row">
+                        <div class="whatsapp-prefix">+55</div>
+                        <input type="tel" id="whatsappNumber" class="form-input" placeholder="11999887766" maxlength="13">
+                    </div>
+                    <p class="hint-text">
+                        Digite 10-11 números (ex: 11999887766 ou 1199887766)
+                    </p>
+                </div>
+                
+                <div class="platform-confirm-row">
+                    <button class="submit-button" id="btnConfirmEntry">
+                        ☑️ Confirmado! Gere o bilhete.
+                    </button>
+                </div>
+                
+                <div class="popup-warning">
+                    <div class="warn-icon">⚠️</div>
+                    <div class="warn-body">
+                        <div class="warn-title">ATENÇÃO</div>
+                        <div class="warn-text" id="confirmationWarning">Carregando informações...</div>
+                    </div>
+                </div>
+
+                <div class="spacer-10"></div>
+
+                <div class="rules-transfer">
+                    🍀Não foi dessa vez? A sorte continua! Voce vai receber um presente de agradecimento, e no domingo entra automaticamente no sorteio de um presente entregue na sua casa 🏠🤗<br><br>👇 Entre grupo VIP e confira os vencedores!
+                    <div class="spacer-10"></div>
+                        <div class="tg-buttons">
+                            <a href="https://t.me/+r8QbQP7IGmxjZWUx" class="tg-button" target="_blank" aria-label="Entrar no grupo VIP via Telegram">TELEGRAM</a>
+                            <a href="https://chat.whatsapp.com/LAG7I2qpjVUHVWI7xE3TIc" class="wa-button" target="_blank" aria-label="Entrar no grupo VIP via WhatsApp">WHATSAPP</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Winner Announcement Popup -->
+    <div id="winnerPopup" class="winner-popup">
+        <div class="winner-popup-content">
+            <span class="close-popup" id="closeWinnerPopupBtn">&times;</span>
+            <div class="winner-popup-body">
+                <div class="winner-image-container">
+                    <img src="https://linkly.link/2Wshk" alt="Winner Announcement" class="winner-image">
+                </div>
+                <h3 class="winner-popup-title">NINGUÉM SAI DE MÃOS VAZIAS!</h3>
+                <div class="winner-popup-text">
+                    <strong>LEMBRE-SE:</strong> quanto mais bilhetes você tiver, maiores serão suas chances na roleta todos os domingos!<br><br>
+                    <strong>POPLUZ</strong> ou <strong>POPN1</strong>? Ou melhor… as duas 😉<br><br>
+                    <a href="https://wa.popsorte.vip" target="_blank" class="winner-claim-link">
+                        Fale com um Especialista agora mesmo!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <!-- Floating Action Buttons (GOGO compact only) -->
+    <a href="https://wa.popsorte.vip" class="floating-whatsapp" target="_blank">
+        <img src="https://i.ibb.co/0VXng48r/wa.gif" alt="WhatsApp" class="floating-whatsapp-img">
+    </a>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav">
+        <a href="#" class="nav-item" data-target="home">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Inicio</span>
+        </a>
+        <a href="#" class="nav-item" data-target="rules">
+            <span class="nav-icon">📋</span>
+            <span class="nav-label">Regras</span>
+        </a>
+        <a href="#" class="nav-item popluz-nav popluz-pulse" data-target="popluz">
+            <span class="nav-icon"><img src="https://i.ibb.co/wFndSwN0/dgnij.gif" alt="POPLUZ"></span>
+            <span class="nav-label"></span>
+        </a>
+        <a href="#" class="nav-item" data-target="search">
+            <span class="nav-icon">🔍</span>
+            <span class="nav-label">Buscar ID</span>
+        </a>
+        <a href="#" class="nav-item" data-target="help">
+            <span class="nav-icon">❓</span>
+            <span class="nav-label">Ajuda</span>
+        </a>
+    </nav>
+        </div>
+    </div>
+    <script src="pop-sorte.js" defer></script>
+    
+    <!-- ==========================================
+         POPLUZ GOLDEN GALA SLIDER JAVASCRIPT
+         ========================================== -->
+    <script>
+    (function() {
+        'use strict';
+        
+        /**
+         * POPLUZ Golden Gala Slider Controller
+         */
+        document.addEventListener('DOMContentLoaded', function() {
+            const galaSection = document.getElementById('popluzGala');
+            
+            // Initialize Golden Gala section when POPLUZ button is clicked
+            window.addEventListener('popluzSectionShown', function() {
+                if (galaSection) {
+                    galaSection.classList.add('active');
+                    galaSection.style.display = 'block';
+                    // Initialize slider after section is shown
+                    setTimeout(initGgSlider, 200);
+                }
+            });
+            
+            // Also initialize if section becomes visible via other means
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                        const isVisible = mutation.target.style.display === 'block' || 
+                                         mutation.target.style.display === '';
+                        if (isVisible && mutation.target.id === 'popluzGala') {
+                            mutation.target.classList.add('active');
+                            setTimeout(initGgSlider, 200);
+                        }
+                    }
+                });
+            });
+            
+            if (galaSection) {
+                observer.observe(galaSection, { attributes: true, attributeFilter: ['style', 'class'] });
+            }
+            
+            /**
+             * ==========================================
+             * GOLDEN GALA SLIDER
+             * ==========================================
+             */
+            const ggSlider = document.getElementById('ggSlider');
+            const ggDotsContainer = document.getElementById('ggDots');
+            let ggCurrentSlide = 0;
+            let ggSlideCount = 0;
+            let ggAutoSlideInterval;
+            
+            function initGgSlider() {
+                if (!ggSlider || !ggDotsContainer) return;
+                
+                // Clear existing dots
+                ggDotsContainer.innerHTML = '';
+                
+                const slides = ggSlider.querySelectorAll('.gg-slide');
+                ggSlideCount = slides.length;
+                
+                if (ggSlideCount === 0) return;
+                
+                // Create dots
+                for (let i = 0; i < ggSlideCount; i++) {
+                    const dot = document.createElement('span');
+                    dot.className = 'dot' + (i === 0 ? ' active' : '');
+                    dot.addEventListener('click', () => goToGgSlide(i));
+                    ggDotsContainer.appendChild(dot);
+                }
+                
+                // Start auto-slide
+                startGgAutoSlide();
+            }
+            
+            function goToGgSlide(index) {
+                ggCurrentSlide = index;
+                ggSlider.style.transform = `translateX(-${index * 100}%)`;
+                
+                // Update dots
+                const dots = ggDotsContainer.querySelectorAll('.dot');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            }
+            
+            function nextGgSlide() {
+                ggCurrentSlide = (ggCurrentSlide + 1) % ggSlideCount;
+                goToGgSlide(ggCurrentSlide);
+            }
+            
+            function startGgAutoSlide() {
+                if (ggAutoSlideInterval) clearInterval(ggAutoSlideInterval);
+                ggAutoSlideInterval = setInterval(nextGgSlide, 4000);
+            }
+            
+            function stopGgAutoSlide() {
+                clearInterval(ggAutoSlideInterval);
+            }
+            
+            // Pause on hover
+            if (ggSlider) {
+                ggSlider.addEventListener('mouseenter', stopGgAutoSlide);
+                ggSlider.addEventListener('mouseleave', startGgAutoSlide);
+            }
+            
+            // Touch/Swipe functionality
+            const ggSliderViewport = document.querySelector('.gg-slider-viewport');
+            let ggTouchStartX = 0;
+            let ggTouchEndX = 0;
+            let ggIsSwiping = false;
+            
+            function handleGgTouchStart(e) {
+                ggTouchStartX = e.touches[0].clientX;
+                ggIsSwiping = false;
+                stopGgAutoSlide();
+            }
+            
+            function handleGgTouchMove(e) {
+                if (!ggTouchStartX) return;
+                const currentX = e.touches[0].clientX;
+                const diffX = ggTouchStartX - currentX;
+                
+                // If swipe distance is significant, mark as swiping
+                if (Math.abs(diffX) > 10) {
+                    ggIsSwiping = true;
+                    // Prevent scrolling while swiping
+                    e.preventDefault();
+                }
+            }
+            
+            function handleGgTouchEnd(e) {
+                if (!ggTouchStartX || !ggIsSwiping) {
+                    ggTouchStartX = 0;
+                    startGgAutoSlide();
+                    return;
+                }
+                
+                ggTouchEndX = e.changedTouches[0].clientX;
+                const diffX = ggTouchStartX - ggTouchEndX;
+                const minSwipeDistance = 50; // Minimum distance for a swipe
+                
+                if (Math.abs(diffX) > minSwipeDistance) {
+                    if (diffX > 0) {
+                        // Swipe left - next slide
+                        nextGgSlide();
+                    } else {
+                        // Swipe right - previous slide
+                        ggCurrentSlide = (ggCurrentSlide - 1 + ggSlideCount) % ggSlideCount;
+                        goToGgSlide(ggCurrentSlide);
+                    }
+                }
+                
+                ggTouchStartX = 0;
+                ggTouchEndX = 0;
+                ggIsSwiping = false;
+                startGgAutoSlide();
+            }
+            
+            // Add touch event listeners
+            if (ggSliderViewport) {
+                ggSliderViewport.addEventListener('touchstart', handleGgTouchStart, { passive: false });
+                ggSliderViewport.addEventListener('touchmove', handleGgTouchMove, { passive: false });
+                ggSliderViewport.addEventListener('touchend', handleGgTouchEnd);
+            }
+            
+            // Initialize slider if section is already visible
+            if (galaSection && galaSection.style.display !== 'none') {
+                setTimeout(initGgSlider, 100);
+            }
+        });
+    })();
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingClear = document.getElementById('floatingClearBtn');
+            const floatingSurpresinha = document.getElementById('floatingSurpresinhaBtn');
+            const originalClear = document.getElementById('btnClearNumbers');
+            const originalSurpresinha = document.getElementById('btnSurpresinha');
+            
+            if (floatingClear && originalClear) {
+                floatingClear.addEventListener('click', function() {
+                    originalClear.click();
+                });
+            }
+            
+            if (floatingSurpresinha && originalSurpresinha) {
+                floatingSurpresinha.addEventListener('click', function() {
+                    originalSurpresinha.click();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
